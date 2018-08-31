@@ -3,15 +3,6 @@
   
     
     <entry>
-      <title>docker</title>
-      <link href="/2018/08/31/docker/"/>
-      <url>/2018/08/31/docker/</url>
-      <content type="html"><![CDATA[]]></content>
-      
-      
-    </entry>
-    
-    <entry>
       <title>Python运维常用的20个库和模块</title>
       <link href="/2018/08/31/2018-07-10-python-test/"/>
       <url>/2018/08/31/2018-07-10-python-test/</url>
@@ -23,6 +14,15 @@
             <tag> python </tag>
             
         </tags>
+      
+    </entry>
+    
+    <entry>
+      <title></title>
+      <link href="/2018/08/31/2018-07-10-Python-%E6%A0%87%E5%87%86%E5%BA%93/"/>
+      <url>/2018/08/31/2018-07-10-Python-%E6%A0%87%E5%87%86%E5%BA%93/</url>
+      <content type="html"><![CDATA[<h2 id="A-New-Post"><a href="#A-New-Post" class="headerlink" title="A New Post"></a>A New Post</h2><p>Enter text in <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>. Use the toolbar above, or click the <strong>?</strong> button for formatting help.<br>Python丰富而强大遍历的标准库是其最突出的优点之一.</p><p>这里当然不可能说明所有的标准库, 本文只简单列出一些标准库的使用, 还有一部分在其它博文中说明:</p><pre><code>Python时间系统Python解析xml与JSONrequests发送HTTP请求PDB调试Python程序Python日志模块loggingPython正则表达式模块rePython虚拟环境virtualenvPython 数据库Python SocketPython WSGI接口使用urllib访问网络资源</code></pre><p>操作系统环境os</p><p>建议使用 import os 风格而非 from os import *。这样可以保证随操作系统不同而有所变化的 os.open() 不会覆盖内置函数 open()。</p><p>在使用 os 这样的大型模块时内置的 dir() 和 help() 函数非常有用。<br>命令行参数sys</p><p>通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 sys 模块的 argv 变量。</p><p>sys 还有 stdin，stdout 和 stderr 属性，即使在 stdout 被重定向时，后者也可以用于显示警告和错误信息。</p><pre><code>&gt;&gt;&gt; sys.stderr.write(&apos;Warning, log file not found starting a new one\n&apos;)Warning, log file not found starting a new one</code></pre><p>数学math<br>数据压缩zlib</p><p>以下模块直接支持通用的数据打包和压缩格式：zlib，gzip，bz2，zipfile，以及 tarfile。</p><pre><code>&gt;&gt;&gt; import zlib&gt;&gt;&gt; s = b&apos;witch which has which witches wrist watch&apos;&gt;&gt;&gt; len(s)41&gt;&gt;&gt; t = zlib.compress(s)&gt;&gt;&gt; len(t)37&gt;&gt;&gt; zlib.decompress(t)b&apos;witch which has which witches wrist watch&apos;&gt;&gt;&gt; zlib.crc32(s)226805979</code></pre><p>性能测试timeit</p><pre><code>&gt;&gt;&gt; from timeit import Timer&gt;&gt;&gt; Timer(&apos;t=a; a=b; b=t&apos;, &apos;a=1; b=2&apos;).timeit()0.57535828626024577&gt;&gt;&gt; Timer(&apos;a,b = b,a&apos;, &apos;a=1; b=2&apos;).timeit()0.54962537085770791</code></pre><p>文件通配符glob</p><p>glob模块提供了一个函数用于从目录通配符搜索中生成文件列表：</p><pre><code>&gt;&gt;&gt; import glob&gt;&gt;&gt; glob.glob(&apos;*.py&apos;)[&apos;primes.py&apos;, &apos;random.py&apos;, &apos;quote.py&apos;]  </code></pre><p>高精度小数 decimal</p><p>decmial模块可以提供制定精度的小数运算，使用前需要&gt;&gt;&gt;import decmial。decmial对象由构造函数decmial.Decmial()根据一个int或字符串参数建立。Python3.5中decmial.Decmial()可以根据float建立对象，但那是不精确的。</p><pre><code>&gt;&gt;&gt;decimal.Decimal(1)Decimal(&apos;1&apos;)&gt;&gt;&gt;decimal.Decimal(&quot;1.2&quot;)Decimal(&apos;1.2&apos;)</code></pre><p>math与cmath库中的数学函数对decimal不适用，但decimal自身提供了一系列数学函数。</p><pre><code>&gt;&gt;&gt; x = decimal.Decimal(2)&gt;&gt;&gt; x.exp()Decimal(&apos;7.389056098930650227230427461&apos;)&gt;&gt;&gt; decimal.Decimal.exp(x)Decimal(&apos;7.389056098930650227230427461&apos;)</code></pre><p>对象序列化pickle</p><p>Python的pickle模块实现了基本的数据序列和反序列化。<br>序列化：<br>​<br>import pickle<br>pickle.dump(obj, file, [,protocol])</p><p>反序列化：</p><p>obj = pickle.load(file)</p>]]></content>
+      
       
     </entry>
     
@@ -42,19 +42,19 @@
     </entry>
     
     <entry>
-      <title></title>
-      <link href="/2018/08/31/2018-07-10-Python-%E6%A0%87%E5%87%86%E5%BA%93/"/>
-      <url>/2018/08/31/2018-07-10-Python-%E6%A0%87%E5%87%86%E5%BA%93/</url>
-      <content type="html"><![CDATA[<h2 id="A-New-Post"><a href="#A-New-Post" class="headerlink" title="A New Post"></a>A New Post</h2><p>Enter text in <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>. Use the toolbar above, or click the <strong>?</strong> button for formatting help.<br>Python丰富而强大遍历的标准库是其最突出的优点之一.</p><p>这里当然不可能说明所有的标准库, 本文只简单列出一些标准库的使用, 还有一部分在其它博文中说明:</p><pre><code>Python时间系统Python解析xml与JSONrequests发送HTTP请求PDB调试Python程序Python日志模块loggingPython正则表达式模块rePython虚拟环境virtualenvPython 数据库Python SocketPython WSGI接口使用urllib访问网络资源</code></pre><p>操作系统环境os</p><p>建议使用 import os 风格而非 from os import *。这样可以保证随操作系统不同而有所变化的 os.open() 不会覆盖内置函数 open()。</p><p>在使用 os 这样的大型模块时内置的 dir() 和 help() 函数非常有用。<br>命令行参数sys</p><p>通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 sys 模块的 argv 变量。</p><p>sys 还有 stdin，stdout 和 stderr 属性，即使在 stdout 被重定向时，后者也可以用于显示警告和错误信息。</p><pre><code>&gt;&gt;&gt; sys.stderr.write(&apos;Warning, log file not found starting a new one\n&apos;)Warning, log file not found starting a new one</code></pre><p>数学math<br>数据压缩zlib</p><p>以下模块直接支持通用的数据打包和压缩格式：zlib，gzip，bz2，zipfile，以及 tarfile。</p><pre><code>&gt;&gt;&gt; import zlib&gt;&gt;&gt; s = b&apos;witch which has which witches wrist watch&apos;&gt;&gt;&gt; len(s)41&gt;&gt;&gt; t = zlib.compress(s)&gt;&gt;&gt; len(t)37&gt;&gt;&gt; zlib.decompress(t)b&apos;witch which has which witches wrist watch&apos;&gt;&gt;&gt; zlib.crc32(s)226805979</code></pre><p>性能测试timeit</p><pre><code>&gt;&gt;&gt; from timeit import Timer&gt;&gt;&gt; Timer(&apos;t=a; a=b; b=t&apos;, &apos;a=1; b=2&apos;).timeit()0.57535828626024577&gt;&gt;&gt; Timer(&apos;a,b = b,a&apos;, &apos;a=1; b=2&apos;).timeit()0.54962537085770791</code></pre><p>文件通配符glob</p><p>glob模块提供了一个函数用于从目录通配符搜索中生成文件列表：</p><pre><code>&gt;&gt;&gt; import glob&gt;&gt;&gt; glob.glob(&apos;*.py&apos;)[&apos;primes.py&apos;, &apos;random.py&apos;, &apos;quote.py&apos;]  </code></pre><p>高精度小数 decimal</p><p>decmial模块可以提供制定精度的小数运算，使用前需要&gt;&gt;&gt;import decmial。decmial对象由构造函数decmial.Decmial()根据一个int或字符串参数建立。Python3.5中decmial.Decmial()可以根据float建立对象，但那是不精确的。</p><pre><code>&gt;&gt;&gt;decimal.Decimal(1)Decimal(&apos;1&apos;)&gt;&gt;&gt;decimal.Decimal(&quot;1.2&quot;)Decimal(&apos;1.2&apos;)</code></pre><p>math与cmath库中的数学函数对decimal不适用，但decimal自身提供了一系列数学函数。</p><pre><code>&gt;&gt;&gt; x = decimal.Decimal(2)&gt;&gt;&gt; x.exp()Decimal(&apos;7.389056098930650227230427461&apos;)&gt;&gt;&gt; decimal.Decimal.exp(x)Decimal(&apos;7.389056098930650227230427461&apos;)</code></pre><p>对象序列化pickle</p><p>Python的pickle模块实现了基本的数据序列和反序列化。<br>序列化：<br>​<br>import pickle<br>pickle.dump(obj, file, [,protocol])</p><p>反序列化：</p><p>obj = pickle.load(file)</p>]]></content>
+      <title>Hello World</title>
+      <link href="/2018/08/31/hello-world/"/>
+      <url>/2018/08/31/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
       
       
     </entry>
     
     <entry>
-      <title>Hello World</title>
-      <link href="/2018/08/31/hello-world/"/>
-      <url>/2018/08/31/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+      <title>docker</title>
+      <link href="/2018/08/31/docker/"/>
+      <url>/2018/08/31/docker/</url>
+      <content type="html"><![CDATA[]]></content>
       
       
     </entry>
