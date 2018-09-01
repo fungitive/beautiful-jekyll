@@ -13,4 +13,37 @@
     <url>%2F2018%2F08%2F31%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
   </entry>
+  <entry>
+    <title><![CDATA[docker三剑客compose、machine、swarm]]></title>
+    <url>%2F2018%2F08%2F31%2F2018-08-08-docker%2F</url>
+    <content type="text"><![CDATA[docker三剑客compose、machine、swarmdocker-compose 安装compose curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose chmod +x /usr/local/bin/docker-compose 测试安装 $ docker-compose --version docker-compose version 1.21.2, build 1719ceb 常用命令 命令: build Build or rebuild services bundle Generate a Docker bundle from the Compose file config Validate and view the Compose file create Create services down Stop and remove containers, networks, images, and volumes events Receive real time events from containers exec Execute a command in a running container help Get help on a command images List images kill Kill containers logs View output from containers pause Pause services port Print the public port for a port binding ps List containers pull Pull service images push Push service images restart Restart services rm Remove stopped containers run Run a one-off command scale Set number of containers for a service start Start services stop Stop services top Display the running processes unpause Unpause services up Create and start containers version Show the Docker-Compose version information https://docs.docker.com/compose/overview/ docker-machine简介 docker-machine是安装docker环境的一个工具，可以在一台机器上通过命令控制几台机器安装docker环境，运行docker命令，创建docker swarm集群的工具。 安装 docker-machine和compose有点类似，都是一个可运行的linux二进制文件(下面都是基于linux版本做的)，下载下来这个文件后放到/usr/local/bin里面设置文件权限就可以直接使用了，docker-machine的github地址https://github.com/docker/machine curl -L https://github.com/docker/machine/releases/download/v0.10.0/docker-machine-`uname -s`-`uname -m` &gt;/tmp/docker-machine &amp;&amp; chmod +x /tmp/docker-machine &amp;&amp; sudo cp /tmp/docker-machine /usr/local/bin/docker-machine 使用 按照docker-machine github上的介绍，它是一个简化Docker安装的命令行工具，通过一个简单的命令行即可在相应的平台上安装Docker，比如VirtualBox、 Digital Ocean、Microsoft Azure。根据他的描述和github上的例子可以看出他可以直接在指定平台上创建机器。 我们这里只测试已经创建好有ip的实体机或者虚拟机。docker-machine操作各个机器实际上用ssh无密码访问的，如果是在已经配置好ip的实体机或虚拟机上用就要手动或者使用脚本设置无密码访问了。 无密码访问ssh-keygen #一直回车 ssh-copy-id root@192.168.1.28 #ip为docker-machine要操作的机器，输入密码上面结束之后，每台机器上还得安装net-tools,docker-machine会用到netstat命令来检测端口使用情况，如果机器上没有安装会报错。如果你确定那台机器上的端口没问题，即使报错也没问题，最终那台机器还是会加入到docker-machine的管理中。yum install net-tools连接机器 docker-machine create -d generic –generic-ip-address=192.168.1.28 node28 node28为给机器的别名 -d generic驱动类型 –generic-ip-address 要控制机器的ip，必须 –generic-engine-port docker-engine的远程访问端口，默认为2376 –generic-ssh-key 远程访问机器的私钥，默认使用.ssh/下面的私钥 –generic-ssh-user 远程访问机器的用户名，默认为root –generic-ssh-port 远程ssh访问的端口，默认为22 –engine-insecure-registry docker-engine的insecure-registry –engine-install-url 安装docker-engine的地址，默认为”https://get.docker.com” –engine-registry-mirror docker-engine镜像的代理地址上面的命令根据国内环境可以换为下面 docker-machine create \ -d generic \ –generic-ip-address=192.168.1.28 \ –engine-install-url=https://get.daocloud.io/docker/ \ –engine-registry-mirror=http://91c0cc1e.m.daocloud.io \ node28通过docker-machine连接了各个机器后，就可以通过docker-machine来操作各个机器了，更多命令查看 docker-machine –helphttps://docs.docker.com/machine/install-machine/https://blog.csdn.net/vchy_zhao/article/details/70238472 swarm简介swarm从docker1.9版本开始就有了，但功能不完善、性能不稳定，一直不能登入生产环境，从1.12版本内置到了docker-engine中，可以直接使用docker swarm命令来操作swarm。 swarm是docker集群的资源管理工具。简单点理解，在很多台机器上部署docker，组成一个docker集群，并把整个集群的资源抽象成资源池，使用者部署docker应用的时候，只需要将应用交给swarm，swarm会根据整个集群资源的使用情况来分配资源给部署的docker应用，可以将这个集群的资源利用率达到最大。类似的服务框架还有mesos+marathon，kubernetes。 ①最早使用的是mesos+marathon那一套，优点是基于成熟的资源调度管理框架mesos，缺点是部署起来还是很麻烦的，像服务发现、负载均衡等概念在里面也都有，但都是碎片化以插件的形式存在，整个体系感觉不是很完善、不像一个整体。 ②kubernetes从发布1.0版本以后在生产得到了很多实践，开始步入主流压过swarm和mesos+marathon，kubernetes针对docker应用集群的特点，概括出几个对象，pod、service、replication controller，pod为运行的基本单元，service则是专门来服务发现和服务代理的，replication controller 应用的副本做负载均衡。kubernetes就是一个很专业很全面完善的docker集群管理工具。 ③swarm在很多方面很像kubernetes，不知道是不是偷偷抄袭的。swarm通过命令就可以很简单的在docker集群中创建应用设置副本数量，内置服务发现代理。swarm+compose≈kubernetes。swarm由于现在内置于docker中，使用部署更简单，功能上和kubernetes很相似，轻量级。 常用命令 swarm init swarm join service create service inspect service ls service rm service scale service ps service update]]></content>
+      <categories>
+        <category>容器云</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python运维常用的20个库和模块]]></title>
+    <url>%2F2018%2F08%2F31%2F2018-07-10-python-test%2F</url>
+    <content type="text"><![CDATA[Python运维常用的20个库和模块1、psutil是一个跨平台库（https://github.com/giampaolo/psutil）能够实现获取系统运行的进程和系统利用率（内存，CPU,磁盘，网络等），主要用于系统监控，分析和系统资源及进程的管理。 2、IPy（http://github.com/haypo/python-ipy）,辅助IP规划。 3、dnspython(http://dnspython.org)Python实现的一个DNS工具包。 4、difflib：difflib作为Python的标准模块，无需安装，作用是对比文本之间的差异。 5、filecmp:系统自带，可以实现文件，目录，遍历子目录的差异，对比功能。 6、smtplib：发送电子邮件模块 7、pycurl(http://pycurl.sourceforge.net)是一个用C语言写的libcurl Python实现，功能强大，支持的协议有：FTP,HTTP,HTTPS,TELNET等，可以理解为Linux下curl命令功能的Python封装。（PS：PycURL在前几天的文章里有提及过） 8、XlsxWriter:操作Excel工作表的文字，数字，公式，图表等。 9、rrdtool:用于跟踪对象的变化，生成这些变化的走走势图 10、scapy(http://www.wecdev.org/projects/scapy/)是一个强大的交互式数据包处理程序，它能够对数据包进行伪造或解包，包括发送数据包，包嗅探，应答和反馈等功能。 11、Clam Antivirus免费开放源代码防毒软件，pyClamad,可以让Python模块直接使用ClamAV病毒扫描守护进程calmd。 12、pexpect:可以理解成Linux下expect的Python封装，通过pexpect我们可以实现对ssh,ftp,passwd,telnet等命令行进行自动交互，而无需人工干涉来达到自动化的目的。 13、paramiko是基于Python实现的SSH2远程安装连接，支持认证及密钥方式。可以实现远程命令执行，文件传输，中间SSH代理等功能。相对于Pexpect,封装的层次更高，更贴近SSH协议的功能，官网地址：http://paramiko.org(依赖：Crypto,Ecdsa,Python开发包python-devel) 14、fabric是基于Python实现的SSH命令行工具，简化了SSH的应用程序部署及系统管理任务，它提供了系统基础的操作组件，可以实现本地或远程shell命令，包括命令执行，文件上传，下载及完整执行日志输出等功能。Fabric在paramiko的基础上做了更高一层的封装，操作起来更加简单。官网地址：http://www.fabfile.org(依赖setuptools,Crypto,paramiko包支持) 15、CGIHTTPRequestHandler实现对CGI的支持。 16、ansible(http://www.ansibleworks.com/)一种集成IT系统的配置管理，应用部署，执行特定任务的开源平台。基于Python实现，由Paramiko和PyYAML两个关键模块构建。Ansibl与Saltstack最大的区别是Ansible无需在被控主机上部署任何客户端，默认直接通过SSH通道进行远程命令执行或下发功能。 17、YAML:是一种用来表达数据序列的编程语言。 18、playbook：一个非常简单的配置管理和多主机部署系统。 19、saltstack(http://saltstack.com)是一个服务器基础架构集中化管理平台，一般可以理解为简化版的puppet和加强版的func。Saltstack基于Python语言实现，结合轻量级消息队列ZeroMQ,与Python每三方模块（Pyzmq,PyCrypto,Pyjinja2,python-msgpack和PyYAML等）构建。 20、func，为解决集群管理，监控问题需设计开发的系统管理基础框架。]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[docker]]></title>
+    <url>%2F2018%2F08%2F31%2Fdocker%2F</url>
+    <content type="text"><![CDATA[docker是什么]]></content>
+      <categories>
+        <category>容器云</category>
+      </categories>
+      <tags>
+        <tag>docker</tag>
+      </tags>
+  </entry>
 </search>
