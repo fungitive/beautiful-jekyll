@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="python," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="python">
-<meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://www.feiutech.cn/categories/index.html">
+<meta name="description" content="Python丰富而强大遍历的标准库是其最突出的优点之一. 这里当然不可能说明所有的标准库, 本文只简单列出一些标准库的使用, 还有一部分在其它博文中说明: Python时间系统 Python解析xml与JSON requests发送HTTP请求 PDB调试Python程序 Python日志模块logging Python正则表达式模块re Python虚拟环境virtualenv Python 数">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python标准库">
+<meta property="og:url" content="http://www.feiutech.cn/2018-08-31-2018-07-10-Python-标准库/index.html">
 <meta property="og:site_name" content="菲宇学堂-关注容器云及Linux运维">
-<meta property="og:description" content="python">
+<meta property="og:description" content="Python丰富而强大遍历的标准库是其最突出的优点之一. 这里当然不可能说明所有的标准库, 本文只简单列出一些标准库的使用, 还有一部分在其它博文中说明: Python时间系统 Python解析xml与JSON requests发送HTTP请求 PDB调试Python程序 Python日志模块logging Python正则表达式模块re Python虚拟环境virtualenv Python 数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-01T01:39:51.050Z">
+<meta property="og:updated_time" content="2018-09-01T08:43:14.255Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
-<meta name="twitter:description" content="python">
+<meta name="twitter:title" content="Python标准库">
+<meta name="twitter:description" content="Python丰富而强大遍历的标准库是其最突出的优点之一. 这里当然不可能说明所有的标准库, 本文只简单列出一些标准库的使用, 还有一部分在其它博文中说明: Python时间系统 Python解析xml与JSON requests发送HTTP请求 PDB调试Python程序 Python日志模块logging Python正则表达式模块re Python虚拟环境virtualenv Python 数">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://www.feiutech.cn/categories/"/>
+  <link rel="canonical" href="http://www.feiutech.cn/2018-08-31-2018-07-10-Python-标准库/"/>
 
 
 
 
 
-  <title>分类 | 菲宇学堂-关注容器云及Linux运维</title>
+  <title>Python标准库 | 菲宇学堂-关注容器云及Linux运维</title>
   
 
 
@@ -288,34 +289,212 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.feiutech.cn/2018-08-31-2018-07-10-Python-标准库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="汪菲宇">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="菲宇学堂-关注容器云及Linux运维">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">分类</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <p>python</p>
-
+          <h1 class="post-title" itemprop="name headline">Python标准库</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-31T23:38:00+00:00">
+                2018-09-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <p>Python丰富而强大遍历的标准库是其最突出的优点之一.</p>
+<p>这里当然不可能说明所有的标准库, 本文只简单列出一些标准库的使用, 还有一部分在其它博文中说明:</p>
+<pre><code>Python时间系统
+Python解析xml与JSON
+requests发送HTTP请求
+PDB调试Python程序
+Python日志模块logging
+Python正则表达式模块re
+Python虚拟环境virtualenv
+Python 数据库
+Python Socket
+Python WSGI接口
+使用urllib访问网络资源
+</code></pre><p>操作系统环境os</p>
+<p>建议使用 import os 风格而非 from os import *。这样可以保证随操作系统不同而有所变化的 os.open() 不会覆盖内置函数 open()。</p>
+<p>在使用 os 这样的大型模块时内置的 dir() 和 help() 函数非常有用。<br>命令行参数sys</p>
+<p>通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 sys 模块的 argv 变量。</p>
+<p>sys 还有 stdin，stdout 和 stderr 属性，即使在 stdout 被重定向时，后者也可以用于显示警告和错误信息。</p>
+<pre><code>&gt;&gt;&gt; sys.stderr.write(&apos;Warning, log file not found starting a new one\n&apos;)
+Warning, log file not found starting a new one
+</code></pre><p>数学math<br>数据压缩zlib</p>
+<p>以下模块直接支持通用的数据打包和压缩格式：zlib，gzip，bz2，zipfile，以及 tarfile。</p>
+<pre><code>&gt;&gt;&gt; import zlib
+&gt;&gt;&gt; s = b&apos;witch which has which witches wrist watch&apos;
+&gt;&gt;&gt; len(s)
+41
+&gt;&gt;&gt; t = zlib.compress(s)
+&gt;&gt;&gt; len(t)
+37
+&gt;&gt;&gt; zlib.decompress(t)
+b&apos;witch which has which witches wrist watch&apos;
+&gt;&gt;&gt; zlib.crc32(s)
+226805979
+</code></pre><p>性能测试timeit</p>
+<pre><code>&gt;&gt;&gt; from timeit import Timer
+&gt;&gt;&gt; Timer(&apos;t=a; a=b; b=t&apos;, &apos;a=1; b=2&apos;).timeit()
+0.57535828626024577
+&gt;&gt;&gt; Timer(&apos;a,b = b,a&apos;, &apos;a=1; b=2&apos;).timeit()
+0.54962537085770791
+</code></pre><p>文件通配符glob</p>
+<p>glob模块提供了一个函数用于从目录通配符搜索中生成文件列表：</p>
+<pre><code>&gt;&gt;&gt; import glob
+&gt;&gt;&gt; glob.glob(&apos;*.py&apos;)
+[&apos;primes.py&apos;, &apos;random.py&apos;, &apos;quote.py&apos;]  
+</code></pre><p>高精度小数 decimal</p>
+<p>decmial模块可以提供制定精度的小数运算，使用前需要&gt;&gt;&gt;import decmial。decmial对象由构造函数decmial.Decmial()根据一个int或字符串参数建立。Python3.5中decmial.Decmial()可以根据float建立对象，但那是不精确的。</p>
+<pre><code>&gt;&gt;&gt;decimal.Decimal(1)
+Decimal(&apos;1&apos;)
+&gt;&gt;&gt;decimal.Decimal(&quot;1.2&quot;)
+Decimal(&apos;1.2&apos;)
+</code></pre><p>math与cmath库中的数学函数对decimal不适用，但decimal自身提供了一系列数学函数。</p>
+<pre><code>&gt;&gt;&gt; x = decimal.Decimal(2)
+&gt;&gt;&gt; x.exp()
+Decimal(&apos;7.389056098930650227230427461&apos;)
+&gt;&gt;&gt; decimal.Decimal.exp(x)
+Decimal(&apos;7.389056098930650227230427461&apos;)
+</code></pre><p>对象序列化pickle</p>
+<p>Python的pickle模块实现了基本的数据序列和反序列化。<br>序列化：<br>​<br>import pickle<br>pickle.dump(obj, file, [,protocol])</p>
+<p>反序列化：</p>
+<p>obj = pickle.load(file)</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018-08-31-hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018-09-01-kubeadm安装Kubernetes1-11集群-1/" rel="prev" title="kubeadm安装Kubernetes1.11集群">
+                kubeadm安装Kubernetes1.11集群 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
